@@ -1,7 +1,16 @@
 package com.example;
 
+import java.util.ArrayList;
+
 public class MyClass {
     public static void main(String[] args){
-        System.out.print("123");
+        ArrayList<MM> mList=null;
+        for(MM mm:mList){
+
+        }
+        System.out.print(111);
+    }
+    class  MM{
+
     }
 }
