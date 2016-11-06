@@ -1,0 +1,46 @@
+//recycleview的局部刷新等等
+0，注意缓存问题
+1，android:fadingEdge="none"
+    去掉拉伸边缘有阴影
+2，RecyclerView setHasFixedSize(true);
+    http://blog.csdn.net/sd19871122/article/details/51649965
+3，RecycleView加载动画（可以自定义）
+    mQuickAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+4，firstOnly属性
+    true just show anim when first loading false show anim when load the data every time
+    mQuickAdapter.isFirstOnly(true);
+5，MultiItemEntity
+   1，Mode必须重写getItemType()方法
+   2，继承BaseMultiItemQuickAdapter
+   3，添加不同的布局
+      addItemType(MultipleItem.TEXT, R.layout.item_text_view);
+      addItemType(MultipleItem.IMG, R.layout.item_image_view);
+6，SpanSizeLookup解决复杂不规则的列
+    multipleItemAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
+                    return data.get(position).getSpanSize();
+                }
+            });
+7, 添加和删除head和对recycleview没影响
+    mQuickAdapter.addHeaderView(headerView，0);
+    mQuickAdapter.addFooterView(footerView, 0);
+    mQuickAdapter.removeFooterView(v);
+    mQuickAdapter.removeHeaderView(v);
+    此处的点击事件是不会包含header和footer的
+    mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
+                @Override
+                public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Toast.makeText(HeaderAndFooterUseActivity.this, "" + Integer.toString(position), Toast.LENGTH_LONG).show();
+                }
+            });
+8，SwipeRefreshLayout+RecycleView
+    1,RecycleView不添加android:fadingEdge="none"
+    直接内嵌好了直接看例子
+9, EmptyView
+     View emptyView = getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) mRecyclerView.getParent(), false);
+     mQuickAdapter.setEmptyView(emptyView);
+     mQuickAdapter.getEmptyView()
+10,可以使用drawger
+11，点击事件，header和footer的事件需要单独添加
+12，expandableitem可以展开的列表项

@@ -1,0 +1,2 @@
+1,使用selector修改TextView中字体的颜色
+  http://blog.csdn.net/dinglin_87/article/details/7885806
