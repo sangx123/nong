@@ -27,6 +27,7 @@ public abstract class BaseActivity extends RxAppCompatActivity  {
         mUnBinder=ButterKnife.bind(this);
         //初始化控件
         init(savedInstanceState);
+        //去掉title
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
