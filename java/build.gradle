@@ -1,6 +1,0 @@
-apply plugin: 'java'
-apply plugin: 'application'
-mainClassName = "com.example.MyClass.main"
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
